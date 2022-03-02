@@ -1,0 +1,22 @@
+{
+    "name": "todo-mern-app",
+    "version": "1.0.0",
+    "description": "A Full Stack Todo App",
+    "main": "server.js",
+    "scripts": {
+        "start": "node backend/server.js",
+        "server": "nodemon backend/server.js",
+        "client": "npm start --prefix frontend"
+    },
+    "author": "Khalil Patiwala",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "mongoose": "^6.2.4",
+        "morgan": "^1.10.0"
+    }
+}
