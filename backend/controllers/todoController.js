@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 // @route   GET /api/goals
 // @access  Private
 const getTodos = asyncHandler(async (req, res) => {
-    const todos = await Todo.find();
+    const todos = await Todo.find().sort([["createdAt", "desc"]]);
     res.status(200).json({
         status: "success",
         result: todos.length,
@@ -58,13 +58,13 @@ const updateTodo = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error(`Todo with ID ${req.params.id} not found`);
     }
-    const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, {
+    await Todo.findByIdAndUpdate(req.params.id, {
         completed: !todo.completed,
     });
     res.status(200).json({
         status: "success",
         data: {
-            todo: updatedTodo,
+            id: req.params.id,
         },
     });
 });
