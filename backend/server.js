@@ -1,9 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
+const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const port = process.env.PORT || 5000;
 
+// Connecting to Database
+connectDB();
+
+// Initializing App
 const app = express();
 
 // App Middleware
